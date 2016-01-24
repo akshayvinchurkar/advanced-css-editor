@@ -4,7 +4,7 @@ Plugin Name: Advanced CSS Editor
 Plugin URI: http://www.hardeepasrani.com/
 Description: It's just an experiment.
 Author: Hardeep Asrani
-Author URI:  http://www.hardeepasrani.com/
+Author URI: http://www.hardeepasrani.com/
 Version: 0.1
 */
 
@@ -23,7 +23,7 @@ function advanced_css_editor_customizer($wp_customize) {
 
 	// Add Layout Picker setting.
 	$wp_customize->add_setting( 'advanced_css_layout_picker_setting', array(
-		'default'		=> 'desktop',
+		'default'		=> 'global',
 		'capability' => 'edit_theme_options',
 		'sanitize_callback' => 'advanced_css_sanitize_choices',
 		'transport' => 'postMessage',
@@ -35,6 +35,7 @@ function advanced_css_editor_customizer($wp_customize) {
 		'section' => 'advanded_css_editor',
 		'settings'   => 'advanced_css_layout_picker_setting',
 		'choices' => array(
+			'global' => '<span class="dashicons dashicons-admin-site" title="Global"></span>',
 			'desktop' => '<span class="dashicons dashicons-desktop" title="Desktop"></span>',
 			'tablet' => '<span class="dashicons dashicons-tablet" title="Tablet"></span>',
 			'phone' => '<span class="dashicons dashicons-smartphone" title="Phone"></span>',
@@ -42,39 +43,55 @@ function advanced_css_editor_customizer($wp_customize) {
 		'priority' => 1
 	) ) );
 
+	$wp_customize->add_setting('advanced_css_global_css', array(
+		'capability' => 'edit_theme_options',
+		'transport' => 'postMessage',
+	));
+
+	$wp_customize->add_control( new CSS_Highlighter_Custom_Control( $wp_customize, 'advanced_css_global_css', array(
+		'label' => __('Global CSS:', 'latte'),
+		'section' => 'advanded_css_editor',
+		'priority' => 5,
+		'id' => 'global_css',
+		'settings' => 'advanced_css_global_css'
+	) ) );
+
 	$wp_customize->add_setting('advanced_css_desktop_css', array(
 		'capability' => 'edit_theme_options',
+		'transport' => 'postMessage',
 	));
 
 	$wp_customize->add_control( new CSS_Highlighter_Custom_Control( $wp_customize, 'advanced_css_desktop_css', array(
 		'label' => __('Desktop CSS:', 'latte'),
 		'section' => 'advanded_css_editor',
-		'priority' => 5,
-		'type' => 'textarea',
+		'priority' => 10,
+		'id' => 'desktop_css',
 		'settings' => 'advanced_css_desktop_css'
 	) ) );
 
 	$wp_customize->add_setting('advanced_css_tablet_css', array(
 		'capability' => 'edit_theme_options',
+		'transport' => 'postMessage',
 	));
 
 	$wp_customize->add_control( new CSS_Highlighter_Custom_Control( $wp_customize, 'advanced_css_tablet_css', array(
 		'label' => __('Tablet CSS:', 'latte'),
 		'section' => 'advanded_css_editor',
-		'priority' => 10,
-		'type' => 'textarea',
+		'priority' => 15,
+		'id' => 'tablet_css',
 		'settings' => 'advanced_css_tablet_css'
 	) ) );
 
 	$wp_customize->add_setting('advanced_css_phone_css', array(
 		'capability' => 'edit_theme_options',
+		'transport' => 'postMessage',
 	));
 
 	$wp_customize->add_control( new CSS_Highlighter_Custom_Control( $wp_customize, 'advanced_css_phone_css', array(
 		'label' => __('Phone CSS:', 'latte'),
 		'section' => 'advanded_css_editor',
-		'priority' => 15,
-		'type' => 'textarea',
+		'priority' => 20,
+		'id' => 'phone_css',
 		'settings' => 'advanced_css_phone_css'
 	) ) );
 
@@ -105,7 +122,10 @@ function advanced_css_editor_scripts() {
 	wp_enqueue_script( 'advanced_css_editor_js', plugin_dir_url( __FILE__ ) . 'js/customizer.js', array( 'jquery'), '', true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'advanced_css_editor_scripts' );
-
+function advanced_css_editor_live() {
+	wp_enqueue_script( 'advanced_css_editor_live_js', plugin_dir_url( __FILE__ ) . 'js/customizer-css.js', array( 'jquery'), '', true );
+}
+add_action( 'customize_preview_init', 'advanced_css_editor_live' );
 // Add styles to Customizer screen.
 function advanced_css_editor_styles() {
 	wp_enqueue_style( 'advanced_css_editor_css', plugin_dir_url( __FILE__ ) . 'css/customizer.css' );
@@ -113,16 +133,20 @@ function advanced_css_editor_styles() {
 add_action( 'customize_controls_print_styles', 'advanced_css_editor_styles' );
 
 function advanced_css_input() {
+		$advanced_css_global_css = get_theme_mod('advanced_css_global_css');
 		$advanced_css_desktop_css = get_theme_mod('advanced_css_desktop_css');
 		$advanced_css_tablet_css = get_theme_mod('advanced_css_tablet_css');
 		$advanced_css_phone_css = get_theme_mod('advanced_css_phone_css');
 ?>
-<style>
+<style type="text/css">
+<?php echo $advanced_css_global_css; ?>
+@media only screen and (min-width: 1024px)  {
 <?php echo $advanced_css_desktop_css; ?>
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)  {
+}
+@media only screen and (min-width: 667px) and (max-width: 1024px)  {
 <?php echo $advanced_css_tablet_css; ?>
 }
-@media only screen  and (min-device-width: 320px)  and (max-device-width: 667px) {
+@media only screen  and (min-width: 320px)  and (max-width: 667px) {
 <?php echo $advanced_css_phone_css; ?>
 }
 </style>

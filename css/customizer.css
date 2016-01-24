@@ -6,7 +6,7 @@ input[type=checkbox].ti-layout {
 input[type=radio].ti-layout + label,
 input[type=checkbox].ti-layout + label {
 	display: inline-block;
-	width: 23.5%;
+	width: 15%;
 	margin: -2px;
 	padding: 4px 12px;
 	margin-bottom: 0;
@@ -45,8 +45,10 @@ input[type=checkbox].ti-layout:checked + label {
 	background-color: #e0e0e0;
 }
 
+#customize-control-advanced_css_desktop_css,
 #customize-control-advanced_css_tablet_css,
 #customize-control-advanced_css_phone_css,
+#customize-control-advanced_css_desktop_css label,
 #customize-control-advanced_css_tablet_css label,
 #customize-control-advanced_css_phone_css label {
 	display: none;

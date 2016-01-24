@@ -11,7 +11,7 @@ class CSS_Highlighter_Custom_Control extends WP_Customize_Control {
 					<?php if ( ! empty( $this->description ) ) : ?>
 						<span class="description customize-control-description"><?php echo $this->description; ?></span>
 					<?php endif; ?>
-					<textarea id="editor" rows="5" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
+					<textarea id="<?php echo $this->id; ?>" rows="5" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
 				</label>
 
 			<?php
