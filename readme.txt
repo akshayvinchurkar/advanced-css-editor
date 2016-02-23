@@ -6,11 +6,12 @@ Tested up to: 4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-
+Advanced CSS Editor is a lightweight plugin that lets you write a different CSS code for each device (desktop, tablets, and mobile phones) right from the Live Customizer, so you can see the outcome in real time.
 
 == Description ==
 
-
+Advanced CSS Editor is a lightweight plugin that lets you write a different CSS code for each device (desktop, tablets, and mobile phones) right from the Live Customizer, so you can see the outcome in real time.
+So, pick a device, write your custom CSS code, and watch the results while you're editing.
 
 Features:
 
