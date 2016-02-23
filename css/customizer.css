@@ -53,3 +53,10 @@ input[type=checkbox].ti-layout:checked + label {
 #customize-control-advanced_css_phone_css label {
 	display: none;
 }
+
+#advanced_css_global_css,
+#advanced_css_desktop_css,
+#advanced_css_tablet_css,
+#advanced_css_phone_css {
+	width: 100%;
+}
