@@ -138,14 +138,20 @@ function advanced_css_input() {
 		$advanced_css_tablet_css = get_theme_mod('advanced_css_tablet_css');
 		$advanced_css_phone_css = get_theme_mod('advanced_css_phone_css');
 ?>
-<style type="text/css">
+<style type="text/css" id="csseditorglobal">
 <?php echo $advanced_css_global_css; ?>
+</style>
+<style type="text/css" id="csseditordesktop">
 @media only screen and (min-width: 1024px)  {
 <?php echo $advanced_css_desktop_css; ?>
 }
+</style>
+<style type="text/css" id="csseditortablet">
 @media only screen and (min-width: 667px) and (max-width: 1024px)  {
 <?php echo $advanced_css_tablet_css; ?>
 }
+</style>
+<style type="text/css" id="csseditorphone">
 @media only screen  and (min-width: 320px)  and (max-width: 667px) {
 <?php echo $advanced_css_phone_css; ?>
 }
