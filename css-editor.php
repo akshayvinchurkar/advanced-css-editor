@@ -2,10 +2,10 @@
 /*
 Plugin Name: Advanced CSS Editor
 Plugin URI: http://www.hardeepasrani.com/
-Description: Advanced CSS Editor is a lightweight plugin that lets you write a different CSS code for each device (desktop, tablets, and mobile phones) right from the Live Customizer, so you can see the outcome in real time.
+Description: A lightweight plugin that lets you write custom CSS code for each device (desktop, tablets, and mobile phones) right from the WordPress Customizer.
 Author: Hardeep Asrani
 Author URI: http://www.hardeepasrani.com/
-Version: 0.1
+Version: 0.2
 */
 
 // Add plugin options to theme customizer.
