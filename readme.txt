@@ -1,8 +1,8 @@
 === Advanced CSS Editor ===
-Contributors: codeinwp, themeisle, hardeepasrani, rodicaelena
+Contributors: codeinwp, themeisle, hardeepasrani, rodicaelena, uriahs-victor
 Tags: code, CSS, custom, dashboard, easy, edit, editor, formatting, free, mobile, responsive, simple
 Requires at least: 3.0
-Tested up to: 4.4
+Tested up to: 4.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

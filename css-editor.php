@@ -5,7 +5,7 @@ Plugin URI: http://www.hardeepasrani.com/
 Description: A lightweight plugin that lets you write custom CSS code for each device (desktop, tablets, and mobile phones) right from the WordPress Customizer.
 Author: Hardeep Asrani
 Author URI: http://www.hardeepasrani.com/
-Version: 1.0
+Version: 1.1
 */
 
 // Add plugin options to theme customizer.
