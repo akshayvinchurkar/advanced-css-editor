@@ -2,7 +2,7 @@
 Contributors: codeinwp, themeisle, hardeepasrani, rodicaelena, uriahs-victor
 Tags: code, CSS, custom, dashboard, easy, edit, editor, formatting, free, mobile, responsive, simple
 Requires at least: 3.0
-Tested up to: 4.6
+Tested up to: 4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,6 +16,7 @@ Features:
 
 - Possibility to add different custom CSS based on the type of deviced
 - Experience live all the changes via Appearance -> Customize
+- Minify your CSS to optimize your site
 - Custom CSS for Phone
 - Custom CSS for Tablet
 - Custom CSS for Desktop
