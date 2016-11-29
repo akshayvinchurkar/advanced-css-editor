@@ -181,32 +181,65 @@ function advanced_css_strip_whitespace( $css ) {
 	return trim( $css );
 }
 
+function advanced_css_save_minify() {
+	$advanced_css_minify = get_theme_mod( 'advanced_css_minify' );
+	$advanced_css_global_css = get_theme_mod( 'advanced_css_global_css' );
+	$advanced_css_desktop_css = get_theme_mod( 'advanced_css_desktop_css' );
+	$advanced_css_tablet_css = get_theme_mod( 'advanced_css_tablet_css' );
+	$advanced_css_phone_css = get_theme_mod( 'advanced_css_phone_css' );
+
+	if( isset( $advanced_css_minify ) && $advanced_css_minify != 1 ) {
+		return;
+	} else {
+		set_theme_mod( 'advanced_css_global_css_minify', advanced_css_strip_whitespace( $advanced_css_global_css ) );
+		set_theme_mod( 'advanced_css_desktop_css_minify', advanced_css_strip_whitespace( $advanced_css_desktop_css ) );
+		set_theme_mod( 'advanced_css_tablet_css_minify', advanced_css_strip_whitespace( $advanced_css_tablet_css ) );
+		set_theme_mod( 'advanced_css_phone_css_minify', advanced_css_strip_whitespace( $advanced_css_phone_css ) );
+	}
+}
+add_action( 'customize_save_after', 'advanced_css_save_minify' );
+
 function advanced_css_input() {
-		$advanced_css_global_css = get_theme_mod('advanced_css_global_css');
-		$advanced_css_desktop_css = get_theme_mod('advanced_css_desktop_css');
-		$advanced_css_tablet_css = get_theme_mod('advanced_css_tablet_css');
-		$advanced_css_phone_css = get_theme_mod('advanced_css_phone_css');
+	$advanced_css_minify = get_theme_mod( 'advanced_css_minify' );
+	if( isset( $advanced_css_minify ) && $advanced_css_minify != 1 ) {
+		$advanced_css_global_css = get_theme_mod( 'advanced_css_global_css' );
+		$advanced_css_desktop_css = get_theme_mod( 'advanced_css_desktop_css' );
+		$advanced_css_tablet_css = get_theme_mod( 'advanced_css_tablet_css' );
+		$advanced_css_phone_css = get_theme_mod( 'advanced_css_phone_css' );
+	} else {
+		$advanced_css_global_css = get_theme_mod( 'advanced_css_global_css_minify' );
+		$advanced_css_desktop_css = get_theme_mod( 'advanced_css_desktop_css_minify' );
+		$advanced_css_tablet_css = get_theme_mod( 'advanced_css_tablet_css_minify' );
+		$advanced_css_phone_css = get_theme_mod( 'advanced_css_phone_css_minify' );
+	}
 ?>
+<?php if(!empty($advanced_css_global_css)) : ?>
 <style type="text/css" id="csseditorglobal">
-<?php echo advanced_css_strip_whitespace( $advanced_css_global_css ); ?>
+<?php echo $advanced_css_global_css; ?>
 </style>
+<?php endif; ?>
+<?php if(!empty($advanced_css_desktop_css)) : ?>
 <style type="text/css" id="csseditordesktop">
 @media only screen and (min-width: 1024px)  {
-<?php echo advanced_css_strip_whitespace( $advanced_css_desktop_css ); ?>
+<?php echo $advanced_css_desktop_css; ?>
 }
 </style>
+<?php endif; ?>
+<?php if(!empty($advanced_css_tablet_css)) : ?>
 <style type="text/css" id="csseditortablet">
 @media only screen and (min-width: 667px) and (max-width: 1024px)  {
-<?php echo advanced_css_strip_whitespace( $advanced_css_tablet_css ); ?>
+<?php echo $advanced_css_tablet_css; ?>
 }
 </style>
+<?php endif; ?>
+<?php if(!empty($advanced_css_phone_css)) : ?>
 <style type="text/css" id="csseditorphone">
 @media only screen  and (min-width: 320px)  and (max-width: 667px) {
-<?php echo advanced_css_strip_whitespace( $advanced_css_phone_css ); ?>
+<?php echo $advanced_css_phone_css; ?>
 }
 </style>
+<?php endif; ?>
 <?php
 }
-
 add_action('wp_head', 'advanced_css_input');
 ?>
