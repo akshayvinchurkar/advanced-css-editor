@@ -1,12 +1,13 @@
-=== Advanced CSS Editor ===
-Contributors: codeinwp, themeisle, hardeepasrani, rodicaelena, uriahs-victor
-Tags: code, CSS, custom, dashboard, easy, edit, editor, formatting, free, mobile, responsive, simple
-Requires at least: 3.0
-Tested up to: 4.7
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+##Advanced CSS Editor
 
-== Description ==
+Contributors: codeinwp, themeisle, hardeepasrani, rodicaelena, uriahs-victor.
+Tags: code, CSS, custom, dashboard, easy, edit, editor, formatting, free, mobile, responsive, simple.
+Requires at least: 3.0.
+Tested up to: 4.7.
+License: GPLv2 or later.
+License URI: http://www.gnu.org/licenses/gpl-2.0.html.
+
+##Description
 
 Advanced CSS Editor is a lightweight plugin that lets you write different CSS code for each device (desktop, tablets, and mobile phones) right from the Live Customizer, letting you can see the outcome in real time.
 
